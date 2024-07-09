@@ -1,0 +1,121 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Gestion des demandes d'autorisations</b></h4>
+            </div>
+            <p-tabView  >
+              <p-tabPanel   header="Liste de demande Autorisations" >
+                <p-table [value]="demAutorisationList" [tableStyle]="{ 'min-width': '50rem' }">
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <th>Nom </th>
+                          <th>Prénom</th>
+                          <th>Date demande</th>
+                          <th>Observation</th>
+                          <th>Action</th>
+                          
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-dem>
+                      <tr>
+                          <td>{{dem.employee.firstName }}</td>
+                          <td>{{dem.employee.lastName }}</td>
+                          <td>{{dem.datedemande | date: 'dd/MM/yyyy'}}</td>
+                          <td>{{dem.observation }}</td>
+                          <td>
+                            <p-button label="Accepter"   (click)="showDialogAccept()" icon="pi pi-check"></p-button>
+                            <p-button label="Refuser"  (click)="showDialogRefus()"severity="danger"></p-button>
+                            <p-dialog header="" [modal]="true" [(visible)]="visibleaccept" [style]="{ width: '25rem' }">
+                                <span class="p-text-secondary block mb-5">Voulez vous Accepter la demande ?</span>
+                               
+                                <div class="flex justify-content-end gap-2">
+                                    <p-button label="Annuler" severity="secondary" (click)="visibleaccept = false" />
+                                    <p-button label="Comfirmer" (click)="accepterdem(dem.id)"  />
+                                </div>
+                            </p-dialog>
+                            <p-dialog header="" [modal]="true" [(visible)]="visiblearefuse" [style]="{ width: '25rem' }">
+                              <span class="p-text-secondary block mb-5">Voulez vous Refuser la demande ?</span>
+                             
+                              <div class="flex justify-content-end gap-2">
+                                  <p-button label="Annuler" severity="secondary" (click)="visiblearefuse = false" />
+                                  <p-button label="Comfirmer" (click)="refusdem(dem.id)" />
+                              </div>
+                          </p-dialog>
+                          </td>
+                          
+                      </tr>
+                      <tr>
+                        <td *ngIf="demAutorisationList.length == 0" colspan="6">Table vide !</td>
+                      </tr>
+                  </ng-template>
+              </p-table>
+              </p-tabPanel>
+              <p-tabPanel   header="Liste de demande Congé" >
+                <p-table [value]="demcgList" [tableStyle]="{ 'min-width': '50rem' }">
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <th>Nom </th>
+                          <th>Prénom</th>
+                          <th>Date demande</th>
+                          <th>Date début</th>
+                          <th>Date fin</th>
+                          <th>Observation</th>
+                          <th>Action</th>
+                          
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-demcg>
+                      <tr>
+                          <td>{{demcg.employee.firstName }}</td>
+                          <td>{{demcg.employee.lastName }}</td>
+                          <td>{{demcg.datedemande | date: 'dd/MM/yyyy'}}</td>
+                          <td>{{demcg.datedebutcg | date: 'dd/MM/yyyy'}}</td>
+                          <td>{{demcg.dfincg | date: 'dd/MM/yyyy'}} </td>
+                          <td>{{demcg.observation }}</td>
+                          <td>
+                            <p-button label="Accepter"   (click)="showDialogAcceptcg()" icon="pi pi-check"></p-button>
+                            <p-button label="Refuser"  (click)="showDialogRefuscg()"severity="danger"></p-button>
+                            <p-dialog header="" [modal]="true" [(visible)]="visibleacceptcg" [style]="{ width: '25rem' }">
+                                <span class="p-text-secondary block mb-5">Voulez vous Accepter la demande ?</span>
+                               
+                                <div class="flex justify-content-end gap-2">
+                                    <p-button label="Annuler" severity="secondary" (click)="visibleacceptcg = false" />
+                                    <p-button label="Comfirmer" (click)="accepterdemcg(demcg.id)"  />
+                                </div>
+                            </p-dialog>
+                            <p-dialog header="" [modal]="true" [(visible)]="visiblearefusecg" [style]="{ width: '25rem' }">
+                              <span class="p-text-secondary block mb-5">Voulez vous Refuser la demande ?</span>
+                             
+                              <div class="flex justify-content-end gap-2">
+                                  <p-button label="Annuler" severity="secondary" (click)="visiblearefusecg = false" />
+                                  <p-button label="Comfirmer" (click)="refusdemcg(demcg.id)" />
+                              </div>
+                          </p-dialog>
+                          </td>
+                          
+                      </tr>
+                      <tr>
+                        <td *ngIf="demcgList.length == 0" colspan="6">Table vide !</td>
+                      </tr>
+                  </ng-template>
+              </p-table>
+              </p-tabPanel>
+            </p-tabView>
+          </div>
+        </div>
+        
+
+        
+
+
+
+
+       
+        
+        
+      </div>
+    </div>
+  </div>

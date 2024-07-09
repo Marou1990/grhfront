@@ -1,0 +1,231 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Chercher  : </b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+                 Retour</a>
+            </div>
+          </div>
+        </div>
+        <form #employeeForm="ngForm">
+          <div class="table-content">
+
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="FirstName" class="p-t-b-10">Matricule</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="matsearch" required maxlength="255"
+                  [(ngModel)]="matsearch" name="matsearch" #firstName="ngModel">
+              </div>
+              <div class="col-sm-4">
+                  <button class="btn btn-success"  (click)="getEmployeeDetailByMat(matsearch)">Chercher</button> 
+              </div>
+            </div>
+
+
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="FirstName" class="p-t-b-10">Nom</label>
+              </div>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="FirstName" required maxlength="255"
+                  [(ngModel)]="searchEmployeeForm.firstName" name="FirstName" #firstName="ngModel" disabled>
+                
+              </div>
+              <div class="col-sm-3">
+                <label for="FirstName" class="p-t-b-10">Prénom</label>
+              </div>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="LastName" required maxlength="255"
+                  [(ngModel)]="searchEmployeeForm.lastName" name="LastName" #lastName="ngModel" disabled>
+                
+              </div>
+            </div>
+            
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label class="p-t-b-10">Email</label>
+              </div>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="Email" required maxlength="255"
+                  [(ngModel)]="searchEmployeeForm.email" name="Email" #email="ngModel" disabled>
+                
+              </div>
+              <div class="col-sm-3">
+                <label for="FirstName" class="p-t-b-10">Téléphone</label>
+              </div>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="Daterecrutement" required maxlength="8"
+                  [(ngModel)]="searchEmployeeForm.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" disabled>
+                 
+                </div>
+            </div>
+
+            
+              
+              <div class="form-group p-10 row">
+                
+                <div class="col-sm-3">
+                  <label for="FirstName" class="p-t-b-10">Identifiant</label>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="Identifiant" required maxlength="10"
+                    [(ngModel)]="searchEmployeeForm.identifiant" name="Identifiant" #identifiant="ngModel" disabled>
+                  
+                </div>
+
+                <div class="col-sm-3">
+                  <label class="p-t-b-10">Adresse</label>
+                </div>
+                <div class="col-sm-3">
+                  <textarea class="form-control" id="Address" required [(ngModel)]="searchEmployeeForm.address" name="Address"
+                    #address="ngModel" disabled>></textarea>
+                  
+                </div>
+              </div>
+             
+
+
+
+            </div>
+
+            
+           
+            
+            
+
+            <p-tabView  [hidden]="!isfinded">
+              <p-tabPanel   header="Demande Autorisation" >
+                <p-toolbar>
+                  <div class="p-toolbar-group-right">
+                    <p-button  [hidden]="isnewdem" (onClick)="Ajouterdem()" label="Ajouter" icon="pi pi-plus"></p-button>
+                    <i class="pi pi-bars"></i>
+                    <p-button [hidden]="!isnewdem" (onClick)="SaveDemande()" label="Sauvgarder" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+                    <div class="col-sm-6"></div>
+                    <p-button [hidden]="!isnewdem" (onClick)="AnnulerDemande()" label="Annuler" icon="pi pi-save" styleClass="p-button-danger"></p-button>
+                  </div>
+                  </p-toolbar>
+               
+               
+              <form >
+                <div class="table-content">
+                  <div class="col-sm-6">
+                    <label class="p-t-b-10">Numéro Autorisation</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select  class="form-control-small" [disabled]="!isnewdem"  
+                [(ngModel)]="demAutorisationForm.numauto" name="numauto" #numauto="ngModel">
+                <option value=1>1  er Autorisation</option>
+                <option value=2>2 eme Autorisation</option>
+                 </select>
+                    
+                  </div>
+                </div>
+
+                <div class="table-content">
+                  <div class="col-sm-6">
+                    <label class="p-t-b-10">Observation</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <textarea [disabled]="!isnewdem" class="form-control" id="observation" 
+                      required [(ngModel)]="demAutorisationForm.observation" name="observation"
+                      #observation="ngModel" >></textarea>
+                    
+                  </div>
+                </div>
+
+                
+                </form>      
+              
+              </p-tabPanel>
+              <p-tabPanel header="Demande Congé" >
+
+                <p-toolbar>
+                  <div class="p-toolbar-group-right">
+                    <p-button   [hidden]="isnewdemcg" (onClick)="Ajouterdemcg()" label="Ajouter" icon="pi pi-plus"></p-button>
+                    <i class="pi pi-bars"></i>
+                    <p-button [hidden]="!isnewdemcg" (onClick)="SaveDemandecg()" label="Sauvgarder" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+                    <div class="col-sm-6"></div>
+                    <p-button  [hidden]="!isnewdemcg" (onClick)="AnnulerDemandecg()" label="Annuler" icon="pi pi-save" styleClass="p-button-danger"></p-button>
+                  </div>
+                  </p-toolbar>
+
+                <form >
+                <div class="table-content" >
+                  <div class="form-group p-10 row">
+
+                    <div class="field col-4 md:col-4">
+                      <label for="icon">Date début du congé</label>
+                      <p-calendar [disabled]="!isnewdemcg" [(ngModel)]="demcgForm.datedebutcg" name="datedebutcg" #datedebutcg="ngModel" [showIcon]="true" inputId="icon">
+                        <div *ngIf="datedebutcg.errors" class="alert alert-danger validationError">
+                          <div [hidden]="!datedebutcg.errors?.['required']">
+                            Le date début du congé est obligatoire !
+                          </div>
+                          <div [hidden]="!datedebutcg.errors?.['touched'] && dfincg.value > datedebutcg.value">
+                            Le date début du congé doit etre inferieur à date retour du congé !
+                          </div> 
+                        </div>
+                      </p-calendar>
+                  </div>
+                  <div class="field col-4 md:col-4">
+                    <label for="icon">Date du Retour</label>
+                    <p-calendar [disabled]="!isnewdemcg" [(ngModel)]="demcgForm.dfincg" name="dfincg" #dfincg="ngModel" [showIcon]="true" inputId="icon">
+                      <div *ngIf="dfincg.errors" class="alert alert-danger validationError">
+                        <div [hidden]="!dfincg.errors?.['required']">
+                          Le date de retour est obligatoire !
+                        </div>
+                        <div [hidden]=" dfincg.value > datedebutcg.value">
+                          Le date de retour doit etre posterieur à date début du congé !
+                        </div> 
+                      </div>
+                    
+                    </p-calendar>
+                </div>
+                <div class="field col-4 md:col-4">
+                  <label for="icon">Type du congé</label>
+                <select  class="form-control-small" [disabled]="!isnewdemcg"  
+                [(ngModel)]="demcgForm.natconge" name="natconge" #natconge="ngModel">
+                <option value="A">Annuel</option>
+                <option value="E" >Exceptionnel</option>
+                <option value="R" >Récupération</option>
+                
+                 </select>
+                 </div>
+
+                  </div>
+                  
+                  
+                  <div class="col-sm-6">
+                    <label class="p-t-b-10">Observation</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="observationsdem"  [disabled]="!isnewdemcg" 
+                      required [(ngModel)]="demcgForm.observation" name="observationsdem"
+                      #observationsdem="ngModel" >></textarea>
+                    
+                  </div>
+                </div>
+                </form> 
+              </p-tabPanel>
+              <p-tabPanel header="Statistique & Solde" [disabled]="true">
+                  Content 3
+              </p-tabPanel>
+          </p-tabView>
+            
+
+          
+          <div class="table-footer">
+          </div>
+
+         
+
+        </form>
+      </div>
+    </div>
+  </div>

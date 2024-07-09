@@ -1,0 +1,54 @@
+<h3>Detail Profil</h3>
+<button pButton type="button"icon="pi pi-plus" class="ui-button-info" [label]="'Ajouter detail '"
+pAddRow [table]="dt" [newRow]="newRow()"></button>
+<p-table #dt [value]="listdetprofil" dataKey="Page" editMode="row">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Page</th>
+            <th>Status</th>
+            <th>Mantainance</th>
+            <th style="width:20em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="rowData">
+            <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                    <input pInputText type="text" [(ngModel)]="rowData.codePage" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                    {{rowData.codePage}}
+                </ng-template>
+            </p-cellEditor>
+            </td>
+            <td>
+                <select   class="form-control-small" 
+                  [(ngModel)]="rowData.status" name="status" #status="ngModel">
+                  <option value="true">OUI</option>
+                  <option value="false">NON</option>
+                   </select>
+               
+                
+            </td>
+            <td>
+                <p-checkbox  [binary]="true" [(ngModel)]="rowData.bmaint"> </p-checkbox> 
+                
+              
+              
+                <p-cellEditor>
+                
+
+            </p-cellEditor>
+            </td>
+           
+            <td style="text-align:center">
+                <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+                <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<br/>
+

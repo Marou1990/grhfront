@@ -1,0 +1,111 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Gestion des employées</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-success" (click)="AddEmployee()">
+                <i class='fas fa-plus-circle'></i><span> Ajouter Employee</span>
+              </button>
+              <button class="btn btn-success" (click)="Adddeamndeauto()">
+                <i class='fas fa-plus-circle'></i><span>Demandes</span>
+              </button>
+              <button class="btn btn-success" (click)="ConsulterListdemande()">
+                <i class='fas fa-plus-circle'></i><span>Traiter les demandes</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+
+        
+
+
+
+
+        <table 
+         class="table table-striped table-hover table-bordered table-content table-body">
+          <thead>
+            <tr class="center-align">
+              <th>Matricule</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Numéro de téléphone</th>
+              <th>Addresse</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employeeList" (click)=" getAutorisation(employee)"  class="center-align">
+              <td>{{ employee.matricule }}</td>
+              <td>{{ employee.firstName }}</td>
+              <td>{{ employee.lastName }}</td>
+              <td>{{ employee.email }}</td>
+              <td>{{ employee.phoneNumber }}</td>
+              <td>{{ employee.address }}</td>
+              
+              <td>
+                <a href="#" [routerLink]="['/ViewEmployee/', employee.id]" class="btn"><i class='fas fa-eye view'></i></a>
+                <a href="#" [routerLink]="['/EditEmployee/', employee.id]" class="btn"><i class="fa fa-edit edit"></i></a>
+                <button type="button" (click)="deleteEmployeeConfirmation(employee)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td *ngIf="employeeList.length == 0" colspan="6">Table vide !</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col-sm-6">
+          <h4><b>Autorisation Liée</b></h4>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content table-body">
+          <thead>
+            <tr class="center-align">
+              
+              <th>Mois</th>
+              <th>Année</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let autorisation of autorisationList" class="center-align">
+              
+              <td>
+              <select  class="form-control-small"  
+              value="{{ autorisation.monthAuto}}" name="etatCivil" disabled>
+              <option value="1">Janvier</option>
+              <option value="2" >Février</option>
+              <option value="3" >Mars</option>
+              <option value="4" >Avril</option>
+              <option value="5">Mai</option>
+              <option value="6" >June</option>
+              <option value="7" >juillet</option>
+              <option value="8" >Aout</option>
+              <option value="9">Septemeber</option>
+              <option value="10" >October</option>
+              <option value="11" >Nouvembre</option>
+              <option value="12" >Décemebre</option>
+               </select>
+               </td>
+              <!--td>{{ autorisation.monthAuto}}</td-->
+              <td>{{ autorisation.yearAuto}}</td>
+              <td style="{{autorisation.stattusAuto == true ? 'background-color: green':'background-color: red;'}} ">
+              <select  class="form-control-small" 
+                      value="{{ autorisation.stattusAuto}}" name="statusauto" disabled>
+                      <option value="true">Non Utilisé</option>
+                      <option value="false" >Utilisé</option>
+                       </select>
+            </td>
+            </tr>
+            <tr>
+              <td *ngIf="autorisationList.length == 0" colspan="6">Table vide !</td> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
