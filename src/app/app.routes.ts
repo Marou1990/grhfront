@@ -10,13 +10,14 @@ import { DemandeAutoComponent } from './components/demande-auto/demande-auto.com
 import { DetailProfilComponent } from './components/detail-profil/detail-profil.component';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { HomeComponent } from './components/home/home.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { ViewEmployeeComponent } from './components/view-employee/view-employee.component';
 import { ConsultListDemandeComponent } from './consult-list-demande/consult-list-demande.component';
 
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'Home', pathMatch: 'full'},
+    { path: '', redirectTo: '', pathMatch: 'full'},
     { path: 'Home', component: HomeComponent },
     { path: 'ViewEmployee/:employeeId', component: ViewEmployeeComponent },
     { path: 'AddEmployee', component: AddEmployeeComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
     { path: 'Pages', component: PagesComponent },
     { path: 'Profils', component: ProfilComponent },
     { path: 'detprofils', component: DetailProfilComponent },
+    { path: 'menu', component: MenuComponent }
   ];
 
   

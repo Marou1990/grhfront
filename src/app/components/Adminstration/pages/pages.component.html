@@ -18,6 +18,23 @@
         <form #PageForm="ngForm">
             <div class="table-content" >
               
+
+              <div class="form-group p-10 row">
+                   
+                <div class="col-sm-3">
+                  <label  class="p-t-b-10">Type Menu</label>
+                </div>
+                <div class="col-sm-3">
+                  <select  style="width:10em"  class="form-control-small" 
+                [(ngModel)]="pageform.typePage" name="typePage" #typePage="ngModel">
+                 <option value="M">Module</option>
+                 <option value="SM">Sous Module</option>
+                 <option value="P">Page</option>
+               </select>
+                  
+                </div>
+              </div>
+
                 <div class="form-group p-10 row">
                     <div class="col-sm-3">
                       <label for="FirstName" class="p-t-b-10">Libéllé</label>
@@ -29,19 +46,10 @@
                     </div>
                    
                   </div>
+                  
                   <div class="form-group p-10 row">
                     <div class="col-sm-3">
-                      <label for="FirstName" class="p-t-b-10">Action</label>
-                    </div>
-                    <div class="col-sm-3">
-                      <input type="text" class="form-control" id="goAction" required maxlength="255"
-                        [(ngModel)]="pageform.goAction" name="goAction" #goAction="ngModel">
-                      
-                    </div>
-                  </div>
-                  <div class="form-group p-10 row">
-                    <div class="col-sm-3">
-                      <label for="FirstName" class="p-t-b-10">Date début</label>
+                      <label  class="p-t-b-10">Date début</label>
                     </div>
                     <div class="col-sm-3">
                         <p-calendar [(ngModel)]="pageform.datedebut" dateFormat="dd/mm/yy"  name="datedebut" #datedebut="ngModel" [showIcon]="true" inputId="icon"></p-calendar>
@@ -52,13 +60,61 @@
                   <div class="form-group p-10 row">
                    
                     <div class="col-sm-3">
-                      <label for="FirstName" class="p-t-b-10">Date fin</label>
+                      <label  class="p-t-b-10">Date fin</label>
                     </div>
                     <div class="col-sm-3">
                         <p-calendar [(ngModel)]="pageform.datefin" dateFormat="dd/mm/yy"  name="datefin" #datefin="ngModel" [showIcon]="true" inputId="icon"></p-calendar>
                       
                     </div>
                   </div>
+
+                  
+
+                  <div   class="form-group p-10 row">
+                    <div class="col-sm-3">
+                      <label for="FirstName" class="p-t-b-10">Action</label>
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control" id="goAction" required maxlength="255"
+                        [(ngModel)]="pageform.goAction" name="goAction" #goAction="ngModel">
+                      
+                    </div>
+                  </div>
+
+                  <div *ngIf="pageform.typePage === 'SM' " class="form-group p-10 row">
+                   
+                    <div class="col-sm-3">
+                      <label  class="p-t-b-10">Module</label>
+                    </div>
+                    <div class="col-sm-3">
+                      <select style="width:10em"   [ngModelOptions]="{standalone: true}" [(ngModel)]="pageprtselected">
+                        <option *ngFor="let pageprt of pageListPrt" 
+                                   [ngValue]="pageprt">
+                                   {{pageprt.libellepg}}
+                        </option>
+                      </select>
+                      
+                    </div>
+                  </div>
+
+                  <div  *ngIf="pageform.typePage === 'P' "  class="form-group p-10 row">
+                   
+                    <div class="col-sm-3">
+                      <label  class="p-t-b-10">Sous Module</label>
+                    </div>
+                    <div class="col-sm-3">
+                      <select style="width:10em"   [ngModelOptions]="{standalone: true}" [(ngModel)]="pageSMselected">
+                        <option *ngFor="let pagesm of pageListSM" 
+                                   [ngValue]="pagesm">
+                                   {{pagesm.libellepg}}
+                        </option>
+                      </select>
+                      
+                    </div>
+                  </div>
+
+
+                 
                   
                   
            

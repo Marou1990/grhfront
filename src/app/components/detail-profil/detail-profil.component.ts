@@ -13,6 +13,7 @@ import { HttpProviderService } from '../../services/http-provider.service';
 import { AddRowDirective } from './AddRowDirective';
 import { ProfilForm } from '../../forms/ProfilForm';
 import {CheckboxModule} from 'primeng/checkbox';
+import { PageForm } from '../../forms/PageForm';
 
 @Component({
   selector: 'app-detail-profil',
@@ -28,12 +29,16 @@ export class DetailProfilComponent implements OnInit{
 
   newdetprofil : DetailProfilForm  = new DetailProfilForm();
   listdetprofil: any = [];
+  pageList: any = [];
+  selectedPage !: PageForm;
+  codeselected !:number;
   clonedDetailProfilForm: { [s: number]: DetailProfilForm } = {};
   
   constructor(private toastr: ToastrService, private route: ActivatedRoute, private router: Router,
     private httpProvider: HttpProviderService) { }
   ngOnInit(): void {
     this.listdetprofil;
+    this.getAllPages() 
   }
 
   async newRow() {
@@ -48,7 +53,7 @@ export class DetailProfilComponent implements OnInit{
    onRowEditSave(detail: DetailProfilForm) {
 
     detail.profil = this.item;
-    
+    detail.codePage = this.selectedPage.code;
     this.httpProvider.savedetailProfil(detail,this.item.codeProfil).subscribe(
   
      async  () => {
@@ -75,5 +80,34 @@ export class DetailProfilComponent implements OnInit{
     delete this.clonedDetailProfilForm[detail.codePage];
   }
 
-   
+  async getAllPages() {
+    
+    this.httpProvider.getAllPages().subscribe((data : any) => {
+      
+      if (data != null && data.body != null) {
+        var resultData = data.body;
+        if (resultData) {
+          this.pageList = resultData;
+        }
+      }
+    },
+    (error : any)=> {
+        if (error) {
+          if (error.status == 404) {
+            if(error.error && error.error.message){
+              this.pageList = [];
+            }
+          }
+        }
+      });
+  }
+
+   onChange(code : any) {
+    
+    if(code !=null){
+      
+      this.selectedPage = code.target.value;
+      alert('this.codeselected '+this.selectedPage.code) ;
+    }
+}
 }

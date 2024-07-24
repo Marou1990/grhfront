@@ -1,0 +1,30 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+       
+        
+<!--button mat-button [matMenuTriggerFor]="plants">Menu</button-->
+
+<!--mat-menu #plants="matMenu"-->
+
+<div class="w-100 d-flex justify-content-start align-items-center" *ngFor="let module of pageListPrtbut">
+  <button mat-menu-item (click)="getMenuName(module.goAction,module.code)" [matMenuTriggerFor]="currentMenu" [ngStyle]="{'font-weight':'bold','font-size':'20px'}">{{module.libellepg}}</button>
+  <mat-menu #currentMenu="matMenu">
+    <button mat-menu-item  *ngFor="let smodule of pageListSMbutfiltred"  (click)="getSMenuName(smodule.goAction,smodule.code)" [matMenuTriggerFor]="currentSMenu"   [ngStyle]="{'font-weight':'bold'}">{{smodule.libellepg}}</button>
+    <mat-menu #currentSMenu="matMenu">
+      <button mat-menu-item (click)="redirect_to(page.goAction)" *ngFor="let page of pageListPagesbutfiltred" [ngStyle]="{'font-weight':'bold'}">{{page.libellepg}}</button>
+    </mat-menu>
+  </mat-menu>
+</div>
+
+  
+       
+       
+      </div>
+    </div>
+  </div>
+
+
+
+
+

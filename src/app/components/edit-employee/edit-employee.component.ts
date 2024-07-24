@@ -66,7 +66,7 @@ export class EditEmployeeComponent  implements OnInit{
               if (resultData != null && resultData.isSuccess) {
                 this.toastr.success(resultData.message);
                 setTimeout(() => {
-                  this.router.navigate(['/Home']);
+                 // this.router.navigate(['/Home']);
                 }, 500);
               }
             }
@@ -75,7 +75,7 @@ export class EditEmployeeComponent  implements OnInit{
           async error => {
             this.toastr.error(error.message);
             setTimeout(() => {
-              this.router.navigate(['/Home']);
+             // this.router.navigate(['/Home']);
             }, 500);
           });
       }

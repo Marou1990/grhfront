@@ -13,17 +13,25 @@ pAddRow [table]="dt" [newRow]="newRow()"></button>
     <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
         <tr [pEditableRow]="rowData">
             <td>
-              <p-cellEditor>
+                <select style="width:10em"   [(ngModel)]="selectedPage">
+                    <option *ngFor="let page of pageList" 
+                               [ngValue]="page">
+                               {{page.libellepg}}
+                    </option>
+                  </select>
+                  
+                 
+              <!--p-cellEditor>
                 <ng-template pTemplate="input">
                     <input pInputText type="text" [(ngModel)]="rowData.codePage" required>
                 </ng-template>
                 <ng-template pTemplate="output">
                     {{rowData.codePage}}
                 </ng-template>
-            </p-cellEditor>
+            </p-cellEditor-->
             </td>
             <td>
-                <select   class="form-control-small" 
+                <select  style="width:10em"  class="form-control-small" 
                   [(ngModel)]="rowData.status" name="status" #status="ngModel">
                   <option value="true">OUI</option>
                   <option value="false">NON</option>

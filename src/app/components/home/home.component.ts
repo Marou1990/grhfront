@@ -37,9 +37,8 @@ const MODALS: { [name: string]: Type<any> } = {
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
-    
-  ],
+    RouterModule
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

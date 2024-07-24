@@ -39,7 +39,7 @@ export class AddEmployeeComponent implements OnInit{
         async data => {
           this.toastr.success('Employee ajouté avec succés');
               setTimeout(() => {
-                this.router.navigate(['/Home']);  
+               // this.router.navigate(['/Home']);  
               }, 500);
        /* if (data != null && data.body != null) {
             var resultData = data.body;
@@ -56,7 +56,7 @@ export class AddEmployeeComponent implements OnInit{
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+          //  this.router.navigate(['/Home']);
           }, 500);
         });
         

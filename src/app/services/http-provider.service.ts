@@ -36,6 +36,26 @@ export class HttpProviderService {
     return this.webApiService.get(httpLink.getAllEmployee);
   }
 
+  public getAllPages(): Observable<any> {
+    return this.webApiService.get(this.apiUrlpages+'/pages');
+  }
+  public getAllPagesPrt(): Observable<any> {
+    return this.webApiService.get(this.apiUrlpages+'/pagesprt');
+  }
+  public getAllSMoudule(): Observable<any> {
+    return this.webApiService.get(this.apiUrlpages+'/pagesSM');
+  }
+  public getAllSSMoudule(): Observable<any> {
+    return this.webApiService.get(this.apiUrlpages+'/pagesSSM');
+  }
+
+  public getallSMouduleBycdprt(cdeprt: number): Observable<any> {
+    return this.webApiService.get(`${this.apiUrlpages}/pagesSM/${cdeprt}`);
+  }
+  public getallPagesBycdprt(cdeprt: number): Observable<any> {
+    return this.webApiService.get(`${this.apiUrlpages}/pages/${cdeprt}`);
+  }
+
   public deleteEmployeeById(model: any): Observable<any> {
     return  this.httpClient.delete(`${apiUrl}/delete-employees/${model}`) ;
   }

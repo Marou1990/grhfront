@@ -96,7 +96,7 @@ export class DemandeAutoComponent implements OnInit{
         async data => {
           this.toastr.success('Demande Autorisation ajouté avec succés');
               setTimeout(() => {
-               this.router.navigate(['/Home']);  
+              // this.router.navigate(['/Home']);  
               }, 500);
 
               this.isnewdem = false ;
@@ -133,7 +133,7 @@ export class DemandeAutoComponent implements OnInit{
          async data => {
            this.toastr.success('Demande Congé ajouté avec succés');
                setTimeout(() => {
-                this.router.navigate(['/Home']);  
+              //  this.router.navigate(['/Home']);  
                }, 500);
  
                this.isnewdemcg = false ;
@@ -141,7 +141,7 @@ export class DemandeAutoComponent implements OnInit{
          async error => {
            this.toastr.error(error.message);
            setTimeout(() => {
-            this.router.navigate(['/Home']);
+           // this.router.navigate(['/Home']);
            }, 500);
  
            this.isnewdemcg = false ;

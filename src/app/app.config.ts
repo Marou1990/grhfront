@@ -7,6 +7,7 @@ import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { AddRowDirective } from './components/detail-profil/AddRowDirective';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
  export const appConfig: ApplicationConfig = {
@@ -16,7 +17,7 @@ import { AddRowDirective } from './components/detail-profil/AddRowDirective';
               provideToastr(), // Toastr providers
               provideHttpClient(),
               provideHttpClient(withFetch()),
-              importProvidersFrom(AddRowDirective) // Register the directive here
+              importProvidersFrom(AddRowDirective), provideAnimationsAsync() // Register the directive here
              ],
 
              
