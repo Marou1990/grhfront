@@ -86,25 +86,29 @@ export class StatisiquesComponent implements OnInit{
 
     this.statService.getautorisationstat("I").subscribe((data: statisticsautorisationForm[]) => {
       const labels = data.map(stat => `${stat.month}`);
+
       const counts = data.map(stat => stat.count);
       
       this.dataauto = {
         labels: [8,7],
         datasets: [
-          {type: 'bar',
-            label: 'I',
+          {
+            type: 'bar',
+            label: 'Pending',
             backgroundColor: ['#ffee33'],
             borderColor: '#1E88E5',
             data: counts
           },
-          {type: 'bar',
-            label: 'A',
+          {
+            type: 'bar',
+            label: 'Accepted',
             backgroundColor: ['#992b27'],
             borderColor: '#1E88E5',
             data: this.countA
           },
-          {type: 'bar',
-            label: 'C',
+          {
+            type: 'bar',
+            label: 'Refused',
             backgroundColor: ['#6ed749'],
             borderColor: '#1E88E5',
             data: this.countC
