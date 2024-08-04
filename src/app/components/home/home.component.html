@@ -7,19 +7,10 @@
         <div class="table-title">
           <div class="row">
             <div class="col-sm-6">
-              <h4><b>Gestion des employées</b></h4>
+              <h4>Gestion des employées    </h4>
+              <h4><b>Nombre de(s) employée(s) :  {{employeeList.length}}</b></h4>
             </div>
-            <!--div class="col-sm-6">
-              <button class="btn btn-success" (click)="AddEmployee()">
-                <i class='fas fa-plus-circle'></i><span> Ajouter Employee</span>
-              </button>
-              <button class="btn btn-success" (click)="Adddeamndeauto()">
-                <i class='fas fa-plus-circle'></i><span>Demandes</span>
-              </button>
-              <button class="btn btn-success" (click)="ConsulterListdemande()">
-                <i class='fas fa-plus-circle'></i><span>Traiter les demandes</span>
-              </button>
-            </div-->
+           
           </div>
         </div>
         
@@ -27,7 +18,9 @@
         
        
 
-
+        <div class="table-container">
+          
+         
         <table 
          class="table table-striped table-hover table-bordered table-content table-body">
           <thead>
@@ -61,10 +54,11 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <div class="col-sm-6">
           <h4><b>Autorisation Liée</b></h4>
         </div>
-        <table class="table table-striped table-hover table-bordered table-content table-body">
+        <table class="table table-striped table-hover table-bordered table-content table-body-det">
           <thead>
             <tr class="center-align">
               

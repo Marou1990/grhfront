@@ -1,0 +1,53 @@
+
+   
+      <div class="register-container">
+        <h1>Trace Connection</h1>
+       
+        <p-table 
+        [value]="tracescnx"  
+        [scrollable]="true"  
+        scrollHeight="400px"> 
+        <ng-template pTemplate="header"> 
+          <tr >
+            <!--th>ID</th-->
+           
+            <th>Date Operation</th>
+            <th>Adresse IP</th>
+            <th>Adresse Mac</th>
+            <th>Date Connection</th>
+            <th>Date Deconnection</th>
+            <th>Status</th>
+          </tr>
+        </ng-template> 
+      
+        <ng-template pTemplate="body" let-trace> 
+            <tr> 
+              <!--td>{{ trace.id }}</td-->
+              
+              <td>{{ trace.datecnx | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+              <td>{{ trace.AdrIP }}</td>
+              <td>{{ trace.AdrMac }}</td>
+              <td>{{ trace.datecnx | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+              <td>{{ trace.datedecnx | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+              <td>
+                <img *ngIf="trace.status == 'Y' " [src]="'assets/images/connect.jpg'" alt="Description of image">
+                <img *ngIf="trace.status == 'N' " [src]="'assets/images/deconnect.jpg'" alt="Description of image">
+              </td>
+              <!--td>{{ trace.timestamp | date: 'dd/MM/yyyy HH:mm:ss' }}</td-->
+            </tr> 
+            
+            <tr>
+              <td *ngIf="tracescnx.length == 0" colspan="6">Table vide !</td>
+            </tr>
+        </ng-template> 
+       
+    </p-table>
+    
+    <p>Number of rows: {{ tracescnx.length }}</p>
+    
+
+
+
+
+  </div>
+ 

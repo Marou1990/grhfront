@@ -48,7 +48,7 @@ export class ProfilComponent  implements OnInit{
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-           // this.router.navigate(['/Home']);
+           this.router.navigate(['/Home']);
           }, 500);
   
          
@@ -62,5 +62,10 @@ export class ProfilComponent  implements OnInit{
     this.profilform = new ProfilForm();
     this.isnew = true ;
     this.isvalid=false;
+  }
+
+  retourhome() {
+
+    this.router.navigate(['/Home']);
   }
 }

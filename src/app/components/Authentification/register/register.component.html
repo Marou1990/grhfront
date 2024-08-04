@@ -1,0 +1,155 @@
+
+<html lang="fr">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title *ngIf="!isSuccessful" >Registration Form</title>
+  </head>
+  <body>
+   
+      <div class="register-container">
+        <h1>Register</h1>
+        <p>It's quick and easy.</p>
+        <form [formGroup]="form" *ngIf="!isSuccessful"  name="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            
+            <input
+              type="text"
+              formControlName="fullname"
+              required
+              fullname
+              class="form-control"
+              placeholder="Full Name"
+              [ngClass]="{ 'is-invalid': submitted && f['fullname'].errors }"
+            />
+            @if (submitted && f['fullname'].errors) {
+            <div class="invalid-feedback">
+              @if (f['fullname'].errors['required']) {
+              <div>Fullname is required</div>
+              }
+            </div>
+            }
+          </div>
+      
+          <div class="form-group">
+            
+            <input
+              type="text"
+              placeholder="Username"
+              formControlName="username"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+            />
+            @if (submitted && f['username'].errors) {
+            <div class="invalid-feedback">
+              @if (f['username'].errors['required']) {
+              <div>Username is required</div>
+              } @if (f['username'].errors['minlength']) {
+              <div>Username must be at least 6 characters</div>
+              } @if (f['username'].errors['maxlength']) {
+              <div>Username must not exceed 20 characters</div>
+              }
+            </div>
+            }
+          </div>
+      
+          <div class="form-group">
+            
+            <input
+              type="text"
+              formControlName="email"
+              placeholder="Email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            />
+            @if (submitted && f['email'].errors) {
+            <div class="invalid-feedback">
+              @if (f['email'].errors['required']) {
+              <div>Email is required</div>
+              } @if (f['email'].errors['email']) {
+              <div>Email is invalid</div>
+              }
+            </div>
+            }
+          </div>
+      
+          <div class="form-group">
+           
+            <input
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+            />
+            @if (submitted && f['password'].errors) {
+            <div class="invalid-feedback">
+              @if (f['password'].errors['required']) {
+              <div>Password is required</div>
+              } @if (f['password'].errors['minlength']) {
+              <div>Password must be at least 6 characters</div>
+              } @if (f['password'].errors['maxlength']) {
+              <div>Username must not exceed 40 characters</div>
+              }
+            </div>
+            }
+          </div>
+      
+          <div class="form-group">
+            <input
+            placeholder="Confirm Password"
+              type="password"
+              formControlName="confirmPassword"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+            />
+            @if (submitted && f['confirmPassword'].errors) {
+            <div class="invalid-feedback">
+              @if (f['confirmPassword'].errors['required']) {
+              <div>Confirm Password is required</div>
+              } @if (f['confirmPassword'].errors['matching']) {
+              <div>Confirm Password does not match</div>
+              }
+            </div>
+            }
+          </div>
+          <p class="info-text">People who use our service have been able to import your contact details to Facebook. <a href="#">En savoir plus</a>.</p>
+          <p class="info-text">By clicking Register, you agree to our<a href="#">Conditions générales</a>, OUR <a href="#">Privacy Policy</a>and our <a href="#">Cookie use policy</a>. You may receive text notifications from us and you can unsubscribe at any time.</p>
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              formControlName="acceptTerms"
+              class="form-check-input check-box"
+              [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }"
+            />
+            <label for="acceptTerms" class="form-check-label"
+              >I have read and agree to the Terms</label
+            >
+            @if (submitted && f['acceptTerms'].errors) {
+            <div class="invalid-feedback">Accept Terms is required</div>
+            }
+          </div>
+      
+          <div class="form-group">
+            <button type="submit" class="btn">Register</button>
+            </div>
+      
+            <div class="alert alert-warning" *ngIf="submitted && isSignUpFailed">
+              Signup failed!<br />{{ errorMessage }}
+            </div>
+            <div class="form-group">
+            <button type="button" (click)="onReset()"  class="btn"> Reset</button>
+          </div>
+        </form>
+        <div class="alert alert-success" *ngIf="isSuccessful">
+          <strong> Registration is successful ! </strong> 
+          <a href="#" class="success-redirect" (click)="signin() ">To log in </a>
+      
+        </div>
+      </div>
+      
+
+
+     
+      </body>
+      </html>

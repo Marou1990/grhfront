@@ -1,0 +1,41 @@
+
+   
+      <div class="register-container">
+        <h1>Trace Operation</h1>
+       
+        <p-table 
+        [value]="traces"  
+        [scrollable]="true"  
+        scrollHeight="400px"> 
+        <ng-template pTemplate="header"> 
+          <tr >
+            <th>ID</th>
+            <th>Operation</th>
+            <th>Entity Name</th>
+            <th>Timestamp</th>
+          </tr>
+        </ng-template> 
+      
+        <ng-template pTemplate="body" let-trace> 
+            <tr> 
+              <td>{{ trace.id }}</td>
+              <td>{{ trace.operation }}</td>
+              <td>{{ trace.entityName }}</td>
+              <td>{{ trace.timestamp | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            </tr> 
+            
+            <tr>
+              <td *ngIf="traces.length == 0" colspan="6">Table vide !</td>
+            </tr>
+        </ng-template> 
+       
+    </p-table>
+    
+    <p>Number of rows: {{ traces.length }}</p>
+    
+
+
+
+
+  </div>
+ 

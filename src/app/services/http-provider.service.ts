@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DetailProfilForm } from '../forms/detail-profil';
 import { ProfilForm } from '../forms/ProfilForm';
 import { WebApiService } from './web-api.service';
 
+var apiUrlpasswrd = "http://localhost:8090/api/reset";
 var apiUrl = "http://localhost:8090/api/employee";
 var apiUrlauto = "http://localhost:8090/api/autorisation";
 
@@ -15,6 +16,8 @@ var httpLink = {
   getEmployeeByMat: apiUrl + "/getemployeesbymat",
   saveEmployee: apiUrl + "/addemployees",
   getAutorisationById: apiUrlauto + "/getautorisations",
+  resetpassrequest: apiUrlpasswrd + "/reset-password",
+  savepasswrd: apiUrlpasswrd + "/save-password",
   //savedemandeauto: apiUrldemande + "/{id}/adddemande",
   
 }
@@ -25,7 +28,7 @@ var httpLink = {
 export class HttpProviderService {
 
   constructor(private webApiService: WebApiService,private httpClient: HttpClient) { }
-
+  
   private  apiUrldemande = "http://localhost:8090/api/demautorisation";
   private  apiUrldemandecg = "http://localhost:8090/api/demcg";
   private  apiUrlpages = "http://localhost:8090/api/admin/pages";
@@ -74,6 +77,10 @@ export class HttpProviderService {
     return this.webApiService.post(httpLink.saveEmployee, model);
   } 
 
+  public resetpassrequest(email: string): Observable<any> {
+    return this.webApiService.post(httpLink.resetpassrequest, email);
+  } 
+
   public getAutorisationlById(model: any): Observable<any> {
     
     return this.webApiService.get(httpLink.getAutorisationById + '/'+model);
@@ -113,5 +120,12 @@ export class HttpProviderService {
    // return this.webApiService.post(`${this.apiUrldetailprofil}/adddetprf`, model);
    return this.httpClient.post(`${this.apiUrldetailprofil}/adddetprf/${codeprofil}`,model);
   } 
+
+  resetPassword(token: string, password: string): Observable<any> {
+    const params = new HttpParams()
+      .set('token', token)
+      .set('password', password);
+    return this.httpClient.post(`${httpLink.savepasswrd}`, {}, { params });
+  }
 
 }

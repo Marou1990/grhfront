@@ -1,0 +1,54 @@
+
+
+#bodyHobbies {
+   
+    display: inline-table;
+    background-color: #fff;
+    padding: 34px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 95%;
+    height: 95%;
+  }
+  
+  .intbox {
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+  }
+  .intbox img {
+    width: 100%;
+  }
+  
+  .intbox1 {
+    
+    margin:auto;
+    text-align:center;
+  
+  }
+  
+  .intbox2 {
+    
+    margin:auto;
+    text-align:center;
+    color:#FFFFFF;
+  }
+  
+  .intbox3 {
+   
+    margin:auto;
+    text-align:center;
+    color:#FFFFFF;
+  }
+  
+  .intbox4 {
+   
+    margin:auto;
+    text-align:center;
+    color:#FFFFFF;
+  }
+
+  .chart {
+    display: flex;
+  }

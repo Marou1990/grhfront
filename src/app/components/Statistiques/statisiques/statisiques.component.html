@@ -1,0 +1,56 @@
+
+   
+     
+       
+        <!--p-table 
+        [value]="statempinsc"  
+        [scrollable]="true"  
+        scrollHeight="400px"> 
+        <ng-template pTemplate="header"> 
+          <tr >
+            <th>count</th>
+            <th>month</th>
+            <th>year</th>
+           
+          </tr>
+        </ng-template> 
+      
+        <ng-template pTemplate="body" let-stat> 
+            <tr> 
+              <td>{{ stat.count }}</td>
+              <td>{{ stat.year }}</td>
+              <td>{{ stat.month }}</td>
+            </tr> 
+            
+            <tr>
+              <td *ngIf="statempinsc.length == 0" colspan="6">Table vide !</td>
+            </tr>
+        </ng-template> 
+       
+    </p-table-->
+    
+    
+    
+
+    <div id="bodyHobbies">
+      <div class=" intbox intbox1">
+        <!--p>number of employees registered per year</p-->
+       
+          <p-chart  class="chart"  type="bar" [data]="data"></p-chart>
+       
+      </div>
+      <div class="intbox intbox2"><p>2</p>
+        <p-chart class="chart" type="bar" [data]="datacivil"></p-chart>
+      </div>
+      <div class="intbox intbox3"><p>3</p>
+        <p-chart class="chart" type="bar" [data]="dataauto"></p-chart>
+      </div>
+      <div class="intbox intbox4"><p>4</p>
+       
+      </div>
+  </div>
+
+
+ 
+ 
+

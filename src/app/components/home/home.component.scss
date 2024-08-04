@@ -2,6 +2,10 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
     padding: 0px;
     margin-top:6%;
+    overflow-y:auto;
+    max-height:700px;
+    width: 100%;
+    display: block;
     
     .table-responsive {
         margin: 30px 0;
@@ -60,8 +64,26 @@
             .table-body {
                 overflow-y:auto;
                 max-height:500px;
+                width: 100%;
+                display: block;
+            }
+            .table-body-det {
+                overflow-y:auto;
+                max-height:500px;
+               
             }
 
         }
     }
+}
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
